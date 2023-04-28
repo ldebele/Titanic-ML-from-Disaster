@@ -5,6 +5,8 @@ import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 
+from sklearn.preprocessing import LabelEncoder
+
 BASE_DIR = './tmp/data'
 TRAIN_DIR = os.path.join(BASE_DIR, 'train.csv')
 TEST_DIR = os.path.join(BASE_DIR, 'test.csv')
@@ -12,21 +14,31 @@ TEST_DIR = os.path.join(BASE_DIR, 'test.csv')
 
 class TitanicSurvival():
     def __init__(self):
-        pass 
+        self.df = None
 
 
     def wrangle(self, path):
-        df = pd.read_csv(path).set_index("PassengerId")
+        self.df = pd.read_csv(path).set_index("PassengerId")
 
         # Drop high-cardinality categorical features
-        df = df.drop(columns=["Name", "Ticket"], inplace=True)
+        self.df.drop(columns=["Name", "Ticket", "Cabin"], inplace=True)
 
         # Fill NaN values
-        df["Age"].fillna(df["Age"].median(), inplace=True)
-        df["Embarded"].fillna("S", inplace=True)
+        self.df["Age"].fillna(self.df["Age"].median(), inplace=True)
+        self.df["Embarked"].fillna("S", inplace=True)
+        
+        # OneHotEncoding
+        self.label_encoding("Sex")
+        self.label_encoding("Embarked")
+
+        return self.df
+
+    
+    def label_encoding(self, item):
+        encoder = LabelEncoder()
+        self.df[item] = encoder.fit_transform(self.df[item])
         
 
-        return df
 
 
 if __name__ == '__main__':
@@ -34,3 +46,4 @@ if __name__ == '__main__':
 
     train = titanic_survival.wrangle(TRAIN_DIR)
     # test = titanic_survival.wrangle(TEST_DIR)
+    print(train.head())
