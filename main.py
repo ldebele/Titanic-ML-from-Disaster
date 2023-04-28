@@ -27,6 +27,14 @@ class TitanicSurvival():
         self.df["Age"].fillna(self.df["Age"].median(), inplace=True)
         self.df["Embarked"].fillna("S", inplace=True)
         
+        # age
+        self.df["Age"] = pd.cut(self.df["Age"], bins=5)
+
+        # total family size
+        self.df["TotFamily"] = self.df["Parch"] + self.df["SibSp"] + 1
+        self.df.drop(columns=["SibSp", "Parch"], inplace=True)
+
+
         # OneHotEncoding
         self.label_encoding("Sex")
         self.label_encoding("Embarked")
