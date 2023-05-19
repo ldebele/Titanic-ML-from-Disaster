@@ -14,6 +14,14 @@ The goal of this project is to build a model that can predict can predict whethe
 
 > Python
 > 
+> Pip
+>
+> Tensorflow
+>
+> Keras
+>
+> Matplotlib
+>
 >Pandas
 >
 >Numpy
@@ -21,7 +29,6 @@ The goal of this project is to build a model that can predict can predict whethe
 > Scikit-learn
 >
 >Seaborn
-
 
 ## Instal
 ```
@@ -32,4 +39,3 @@ pip install -r requirements.txt
 
 ## contributor
 - `Lemi Debele`
-=======
