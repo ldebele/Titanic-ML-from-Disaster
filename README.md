@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 # Titanic-ML-From-Disaster
 
 ## Table Contents
