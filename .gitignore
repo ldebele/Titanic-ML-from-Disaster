@@ -1,0 +1,5 @@
+# byte-compile
+__pycache__
+
+# data set
+tmp/data
