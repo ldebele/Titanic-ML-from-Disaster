@@ -2,8 +2,6 @@
 # byte-compile
 __pycache__
 
-# data set
-tmp/data
 =======
 .ipynb_checkpoints
 >>>>>>> be5f87a504a87cbe8d7b52c02a313649a2681488
